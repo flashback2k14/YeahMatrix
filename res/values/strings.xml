@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Yeah! Matrix</string>
+    <string name="action_settings">Settings</string>
+    <string name="clear">Clear</string>
+
+    <style name="DefaultButtonText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:shadowColor">#f9f9f9</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <string name="zweierMatrix">Determinate 2er Matrix</string>
+    <string name="dreiermatrix">Determinate 3er Matrix</string>
+    <string name="detZM">Berechnung Determinate Faktor 2 Matrix</string>
+    
+    <string name="a11">A11</string>
+    <string name="a12">A12</string>
+    <string name="a21">A21</string>
+    <string name="a22">A22</string>
+    <string name="berechne">Berechnung</string>
+    <string name="ergebnis">Ergebnis</string>
+    <string name="inverse">Inverse</string>
+    <string name="detDM">Berechnung Determinate Faktor 3 Matrix</string>
+    <string name="a13">A13</string>
+    <string name="a23">A23</string>
+    <string name="a31">A31</string>
+    <string name="a32">A32</string>
+    <string name="a33">A33</string>
+
+</resources>

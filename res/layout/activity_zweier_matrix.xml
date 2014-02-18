@@ -1,0 +1,161 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ZweierMatrixActivity" >
+
+    <TextView
+        android:id="@+id/tvHeadlineZM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/detZM"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="520dp"
+            android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="48dp"
+            android:text="@string/a11"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView1"
+            android:layout_below="@+id/etA11"
+            android:layout_marginTop="48dp"
+            android:text="@string/a12"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="48dp"
+            android:text="@string/a21"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/etA21"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_alignLeft="@+id/etA12"
+            android:ems="10"
+            android:inputType="number|numberSigned|numberDecimal"
+            android:shadowColor="@color/etUlineColor"
+            android:textColorLink="@color/etUlineColor" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView3"
+            android:layout_below="@+id/etA21"
+            android:layout_marginTop="48dp"
+            android:text="@string/a22"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/etA22"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView4"
+            android:layout_alignBottom="@+id/textView4"
+            android:layout_alignLeft="@+id/etA21"
+            android:ems="10"
+            android:inputType="number|numberSigned|numberDecimal"
+            android:shadowColor="@color/etUlineColor"
+            android:textColorLink="@color/etUlineColor" />
+
+        <EditText
+            android:id="@+id/etA12"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignLeft="@+id/etA11"
+            android:ems="10"
+            android:inputType="number|numberSigned|numberDecimal"
+            android:shadowColor="@color/etUlineColor"
+            android:textColorLink="@color/etUlineColor" >
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/etA11"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView1"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_marginLeft="48dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:ems="10"
+            android:inputType="number|numberSigned|numberDecimal"
+            android:shadowColor="@color/etUlineColor"
+            android:textColorLink="@color/etUlineColor" >
+
+            <requestFocus />
+
+        </EditText>
+
+        <Button
+            android:id="@+id/btnBerechneDetZM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_below="@+id/etA22"
+            android:layout_marginLeft="-8dp"
+            android:layout_marginTop="48dp"
+            android:text="@string/berechne" />
+
+        <TextView
+            android:id="@+id/tvErgebnis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btnBerechneDetZM"
+            android:layout_below="@+id/btnBerechneDetZM"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="25dp"
+            android:hint="@string/ergebnis"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/tvInverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tvErgebnis"
+            android:layout_below="@+id/tvErgebnis"
+            android:layout_marginTop="25dp"
+            android:hint="@string/inverse"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    	</RelativeLayout>
+    </ScrollView>
+</LinearLayout>
