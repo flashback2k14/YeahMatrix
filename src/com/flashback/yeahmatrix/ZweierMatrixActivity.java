@@ -44,6 +44,8 @@ public class ZweierMatrixActivity extends Activity {
 				int determinante = 0;
 				boolean inverseD = false;
 				
+				MatrizenBerechnung mb = new MatrizenBerechnung();
+				
 				try {
 					a11 = Integer.parseInt(etA11.getText().toString());
 					a12 = Integer.parseInt(etA12.getText().toString());
@@ -54,7 +56,7 @@ public class ZweierMatrixActivity extends Activity {
 				}
 				
 				try {
-					MatrizenBerechnung mb = new MatrizenBerechnung();
+					//MatrizenBerechnung mb = new MatrizenBerechnung();
 					determinante = mb.berechneDeterminateZweierMatrix(a11, a12, a21, a22);
 					inverseD = mb.existiertInverse(determinante);
 				} catch (Exception e) {

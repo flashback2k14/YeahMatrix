@@ -54,6 +54,8 @@ public class DreierMatrixActivity extends Activity {
 				int determinante = 0;
 				boolean inverseD = false;
 				
+				MatrizenBerechnung mb = new MatrizenBerechnung();
+				
 				try {
 					a11 = Integer.parseInt(etA11.getText().toString());
 					a12 = Integer.parseInt(etA12.getText().toString());
@@ -69,7 +71,7 @@ public class DreierMatrixActivity extends Activity {
 				}
 				
 				try {
-					MatrizenBerechnung mb = new MatrizenBerechnung();
+					//MatrizenBerechnung mb = new MatrizenBerechnung();
 					determinante = mb.berechneDeterminateDritterMatrix(a11, a12, a13, a21, a22, a23, a31, a32, a33);
 					inverseD = mb.existiertInverse(determinante);
 				} catch (Exception e) {
