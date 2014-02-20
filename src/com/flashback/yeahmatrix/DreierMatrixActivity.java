@@ -1,5 +1,8 @@
 package com.flashback.yeahmatrix;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import com.flashback.yeahmatrix.Matrix.MatrizenBerechnung;
 
 import android.os.Bundle;
@@ -23,6 +26,8 @@ public class DreierMatrixActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dreier_matrix);
+		setTitle(R.string.dreiermatrix);
+		setTitleColor(getResources().getColor(R.color.headlineWhite));
 		
 		etA11 = (EditText)findViewById(R.id.etA11DM);
 		etA12 = (EditText)findViewById(R.id.etA12DM);
@@ -52,7 +57,9 @@ public class DreierMatrixActivity extends Activity {
 				int a32 = 0;
 				int a33 = 0;
 				int determinante = 0;
-				boolean inverseD = false;
+				boolean exiInverse = false;
+				String detA = "";
+				String inverse = "";
 				
 				MatrizenBerechnung mb = new MatrizenBerechnung();
 				
@@ -71,15 +78,27 @@ public class DreierMatrixActivity extends Activity {
 				}
 				
 				try {
-					//MatrizenBerechnung mb = new MatrizenBerechnung();
 					determinante = mb.berechneDeterminateDritterMatrix(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					inverseD = mb.existiertInverse(determinante);
+					exiInverse = mb.existiertInverse(determinante);
 				} catch (Exception e) {
 					Toast.makeText(getApplicationContext(), "Berechnung fehlgeschlagen!", Toast.LENGTH_LONG).show();
 				}
+				
+				try {
+					inverse = mb.berechnungInverseDreierMatrix(determinante, a11, a12, a13, a21, a22, a23, a31, a32, a33);
+				} catch (Exception e) {
+					Toast.makeText(getApplicationContext(), "Berechnung Inverse fehlgeschlagen!", Toast.LENGTH_LONG).show();
+				}
 			
-				tvErgebnisDM.setText("Die Determinate lautet: " + String.valueOf(determinante));
-				tvInverseDM.setText("Existiert eine Inverse?: " + String.valueOf(inverseD));
+				Locale locale = Locale.GERMANY;
+				detA = NumberFormat.getNumberInstance(locale).format(determinante);
+				tvErgebnisDM.setText("Die Determinate lautet: " + detA);
+							
+				if (exiInverse) {
+					tvInverseDM.setText("Die Inverse lautet:\n\n" + inverse);
+				} else {
+					tvInverseDM.setText("Es existiert keine Inverse.");
+				}
 			}
 		});
 	}

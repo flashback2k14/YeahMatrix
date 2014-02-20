@@ -28,8 +28,8 @@
     <string name="a21">A21</string>
     <string name="a22">A22</string>
     <string name="berechne">Berechnung</string>
-    <string name="ergebnis">Ergebnis</string>
-    <string name="inverse">Inverse</string>
+    <string name="ergebnis">Ergebnis Determinate</string>
+    <string name="inverse">Ergebnis Inverse</string>
     <string name="detDM">Berechnung Determinate Faktor 3 Matrix</string>
     <string name="a13">A13</string>
     <string name="a23">A23</string>
