@@ -1,5 +1,7 @@
 package com.flashback.yeahmatrix;
 
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +18,11 @@ public class StartActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
-		
+		//Tinted Statusbar
+		SystemBarTintManager stm = new SystemBarTintManager(this);
+		stm.setStatusBarTintEnabled(true);
+		stm.setStatusBarTintColor(getResources().getColor(R.color.etUlineColor));
+				
 		btnZweierMatrix = (Button)findViewById(R.id.btnZweierM);
 		btnDreierMatrix = (Button)findViewById(R.id.btnDreierM);
 		

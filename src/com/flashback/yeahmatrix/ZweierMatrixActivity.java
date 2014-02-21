@@ -3,8 +3,6 @@ package com.flashback.yeahmatrix;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import com.flashback.yeahmatrix.Matrix.MatrizenBerechnung;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,7 +12,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.flashback.yeahmatrix.Matrix.MatrizenBerechnung;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class ZweierMatrixActivity extends Activity {
 
@@ -28,7 +31,11 @@ public class ZweierMatrixActivity extends Activity {
 		setContentView(R.layout.activity_zweier_matrix);
 		setTitle(R.string.zweierMatrix);
 		setTitleColor(getResources().getColor(R.color.headlineWhite));
-		
+		//Tinted Statusbar
+		SystemBarTintManager stm = new SystemBarTintManager(this);
+		stm.setStatusBarTintEnabled(true);
+		stm.setStatusBarTintColor(getResources().getColor(R.color.etUlineColor));
+					
 		etA11 = (EditText)findViewById(R.id.etA11);
 		etA12 = (EditText)findViewById(R.id.etA12);
 		etA21 = (EditText)findViewById(R.id.etA21);
@@ -48,6 +55,9 @@ public class ZweierMatrixActivity extends Activity {
 				int a22 = 0;
 				int determinante = 0;
 				boolean exiInverseD = false;
+				boolean userInputOk = false;
+				boolean calcOperationDetOk = false;
+				boolean calcOperationInvOk = false;
 				String detA = "";
 				String inverse = "";
 				
@@ -58,31 +68,36 @@ public class ZweierMatrixActivity extends Activity {
 					a12 = Integer.parseInt(etA12.getText().toString());
 					a21 = Integer.parseInt(etA21.getText().toString());
 					a22 = Integer.parseInt(etA22.getText().toString());
+					userInputOk = true;
 				} catch (Exception e) {
-					Toast.makeText(getApplicationContext(), "Fehlerhafte Werteingabe!", Toast.LENGTH_LONG).show();
+					Crouton.makeText(ZweierMatrixActivity.this, "Fehlerhafte Werteingabe!", Style.ALERT).show();
 				}
 				
 				try {
 					determinante = mb.berechneDeterminateZweierMatrix(a11, a12, a21, a22);
 					exiInverseD = mb.existiertInverse(determinante);
+					calcOperationDetOk = true;
 				} catch (Exception e) {
-					Toast.makeText(getApplicationContext(), "Berechnung fehlgeschlagen!", Toast.LENGTH_LONG).show();
+					Crouton.makeText(ZweierMatrixActivity.this, "Berechnung fehlgeschlagen!", Style.ALERT).show();
 				}		
 				
 				try {
 					inverse = mb.berechnungInverseZweiterMatrix(determinante, a11, a12, a21, a22);
+					calcOperationInvOk = true;
 				} catch (Exception e) {
-					Toast.makeText(getApplicationContext(), "Berechnung Inverse fehlgeschlagen!", Toast.LENGTH_LONG).show();
+					Crouton.makeText(ZweierMatrixActivity.this, "Berechnung Inverse fehlgeschlagen!", Style.ALERT).show();
 				}
 			
-				Locale locale = Locale.GERMANY;
-				detA = NumberFormat.getNumberInstance(locale).format(determinante);
-				tvErgebnis.setText("Die Determinate lautet: " + detA);
+				if (userInputOk && calcOperationDetOk && calcOperationInvOk) {
+					Locale locale = Locale.GERMANY;
+					detA = NumberFormat.getNumberInstance(locale).format(determinante);
+					tvErgebnis.setText("Die Determinate lautet: " + detA);
 				
-				if (exiInverseD) {
-					tvInverse.setText("Die Inverse lautet:\n\n" + inverse);
-				} else {
-					tvInverse.setText("Es existiert keine Inverse.");
+					if (exiInverseD) {
+						tvInverse.setText("Die Inverse lautet:\n\n" + inverse);
+					} else {
+						tvInverse.setText("Es existiert keine Inverse.");
+					}
 				}
 			}
 		});
@@ -115,4 +130,10 @@ public class ZweierMatrixActivity extends Activity {
 	            return super.onOptionsItemSelected(item);
 	     }
 	 }
+	
+	@Override
+	public void onDestroy() {
+		Crouton.cancelAllCroutons();
+		super.onDestroy();
+	}
 }
