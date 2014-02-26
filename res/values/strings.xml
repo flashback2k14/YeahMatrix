@@ -36,5 +36,13 @@
     <string name="a31">A31</string>
     <string name="a32">A32</string>
     <string name="a33">A33</string>
+    <string name="license">Verwendete Libaries</string>
+    <string name="btnDialogClose">Schließen</string>
+    <string name="l1">Vielen Dank für die Benutzung meiner App. Folgende Bibliotheken habe ich verwendet:</string>
+    <string name="l2">Crouton</string>
+    <string name="l3">SystemBarTint</string>
+    <string name="l21">https://github.com/keyboardsurfer/Crouton</string>
+    <string name="l22">Apache Version 2.0</string>
+    <string name="l31">https://github.com/jgilfelt/SystemBarTint</string>
 
 </resources>
